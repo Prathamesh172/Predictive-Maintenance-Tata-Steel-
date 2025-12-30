@@ -1,134 +1,107 @@
 # Predictive Maintenance – Machine Failure Prediction
 
-**Anticipating industrial machine failures using sensor data and machine learning**
+**Machine failure prediction using industrial sensor data**
 
-This project focuses on predicting machine failures in an industrial setting using operational sensor data. The goal is to move from *reactive maintenance* to **predictive maintenance**, reducing unplanned downtime, maintenance costs, and production losses.
+This project focuses on predicting machine failures in an industrial manufacturing setting using operational and sensor-level data. The objective is to support predictive maintenance strategies by identifying potential failures before they occur, thereby reducing unplanned downtime, maintenance costs, and operational risk.
 
-The dataset simulates realistic manufacturing conditions, including tool wear, thermal behavior, torque, speed, and multiple failure modes. The project treats failure prediction as a **real-world classification problem** rather than a toy ML exercise.
-
----
-
-## ✨ Project Highlights
-
-* End-to-end predictive maintenance pipeline
-* Multiple failure modes modeled, not just a single binary label
-* Strong emphasis on feature understanding and failure logic
-* Tree-based ensemble models suitable for industrial data
+The dataset represents realistic manufacturing conditions, including thermal behavior, mechanical load, tool wear, and multiple failure mechanisms commonly observed in production environments.
 
 ---
 
-## 📊 Dataset Overview
+## 📌 Project Objectives
 
-The dataset represents sensor readings and operational parameters collected from industrial machines during production.
+* Predict machine failures based on sensor and process data
+* Model multiple failure types encountered in industrial systems
+* Evaluate machine learning models using metrics suitable for imbalanced data
+* Demonstrate an end-to-end predictive maintenance workflow
+
+---
+
+## 📊 Dataset Description
+
+The dataset consists of simulated sensor readings and operational parameters collected during machine operation.
 
 ### Input Features
 
 * **Type** – Product quality category (Low, Medium, High)
-* **Air Temperature [K]** – Ambient air temperature around the machine
-* **Process Temperature [K]** – Internal process temperature
-* **Rotational Speed [rpm]** – Machine operating speed
-* **Torque [Nm]** – Applied torque during operation
-* **Tool Wear [min]** – Accumulated tool usage time
+* **Air Temperature [K]** – Ambient air temperature surrounding the machine
+* **Process Temperature [K]** – Temperature within the manufacturing process
+* **Rotational Speed [rpm]** – Operating speed of the machine
+* **Torque [Nm]** – Mechanical torque applied during operation
+* **Tool Wear [min]** – Cumulative tool usage time
 
 ### Target Variables
 
 * **Machine Failure** – Overall failure indicator
 * **Tool Wear Failure** – Failure due to excessive tool usage
-* **Heat Dissipation Failure** – Failure caused by insufficient thermal difference
-* **Power Failure** – Failure when power requirements exceed limits
-* **Overstrain Failure** – Failure due to excessive mechanical stress
-* **Random Failures** – Stochastic failures independent of sensor readings
+* **Heat Dissipation Failure** – Failure caused by insufficient heat dissipation
+* **Power Failure** – Failure due to abnormal power requirements
+* **Overstrain Failure** – Failure resulting from excessive mechanical stress
+* **Random Failures** – Stochastic failures independent of operating conditions
 
-This structure allows the model to learn both **systematic failures** and **random failure behavior**, which is common in real industrial environments.
+This structure allows the model to capture both deterministic failure patterns and random failure events typically observed in industrial systems.
 
 ---
 
 ## 🧠 Modeling Approach
 
-The problem is treated as a **classification task** with strong class imbalance, typical of failure prediction systems.
+The task is formulated as a **classification problem** with significant class imbalance, which is characteristic of real-world failure prediction scenarios.
 
-Key steps:
+Key steps in the workflow include:
 
-* Exploratory Data Analysis (EDA) to understand sensor distributions and failure patterns
-* Feature preprocessing and encoding for categorical variables
-* Handling class imbalance using appropriate evaluation metrics
-* Training ensemble-based models well-suited for tabular sensor data
+* Exploratory data analysis to understand sensor behavior and failure distribution
+* Feature preprocessing and encoding of categorical variables
+* Model training using algorithms well-suited for structured tabular data
+* Evaluation using metrics that appropriately reflect performance on rare failure events
 
 ### Models Used
 
 * **XGBoost**
 * **LightGBM**
 
-These models were chosen for their robustness, interpretability, and strong performance on structured industrial datasets.
+These ensemble methods were selected due to their robustness, scalability, and strong performance on industrial tabular datasets.
 
 ---
 
-## 📈 Evaluation Metrics
+## 📈 Evaluation Metrics and Results
 
-Because failures are rare events, accuracy alone is misleading. The project focuses on:
+Given the imbalanced nature of the dataset, model performance was evaluated using:
 
-* **ROC-AUC** – Ability to distinguish failure vs non-failure
-* **F1 Score** – Balance between precision and recall
+* **ROC-AUC** – to measure discriminative ability
+* **F1 Score** – to balance precision and recall
 
-### Performance
+### Model Performance
 
 * **ROC-AUC:** ~0.95
 * **F1 Score:** ~0.87
 
-These results indicate strong predictive capability while maintaining practical reliability.
+These results indicate reliable failure detection while maintaining a balance between false positives and false negatives.
 
 ---
 
 ## 🛠 Tech Stack
 
 * **Python**
-* **NumPy, Pandas** – data manipulation
-* **Matplotlib, Seaborn** – visualization
+* **NumPy, Pandas** – data manipulation and analysis
+* **Matplotlib, Seaborn** – data visualization
 * **Scikit-learn** – preprocessing and evaluation
 * **XGBoost, LightGBM** – model training
 
 ---
 
-## ▶️ How to run the project
+## 📚 Key Takeaways
 
-1. Clone the repository
-
-```bash
-git clone https://github.com/your-username/predictive-maintenance.git
-cd predictive-maintenance
-```
-
-2. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-3. Open the notebook
-
-```bash
-jupyter notebook
-```
-
-4. Run `Tata Steel Machine Failure Prediction.ipynb`
+* Predictive maintenance problems typically involve highly imbalanced datasets
+* Domain understanding is critical for meaningful feature interpretation
+* Ensemble tree-based models provide strong performance on industrial sensor data
+* Appropriate evaluation metrics are essential for assessing real-world utility
 
 ---
 
-## 🔍 Key Learnings
+## 🔍 Use Case and Impact
 
-* Predictive maintenance is fundamentally an **imbalanced classification** problem
-* Feature understanding is as important as model choice in industrial ML
-* Ensemble tree models provide an excellent balance between performance and interpretability
-* Evaluating failure prediction systems requires domain-aware metrics, not just accuracy
+Accurate machine failure prediction enables organizations to schedule maintenance proactively, reduce downtime, and improve operational efficiency. This project demonstrates how machine learning techniques can be applied to industrial reliability problems in a structured and interpretable manner.
 
 ---
 
-## 🌱 Why this project matters
-
-In real manufacturing environments, even small improvements in failure prediction can translate into significant cost savings and improved safety.
-
-This project demonstrates how machine learning can be applied responsibly to **industrial reliability problems**, with an emphasis on interpretability, robustness, and business impact.
-
----
-
-If you are interested in industrial ML, predictive maintenance, or applied data science for manufacturing systems, feel free to explore the notebook and experiment with the models.
+This repository is intended for educational and applied data science exploration in the context of predictive maintenance.
