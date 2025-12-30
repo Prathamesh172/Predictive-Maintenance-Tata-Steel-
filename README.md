@@ -1,4 +1,4 @@
-# 🏭 Predictive Maintenance – Machine Failure Prediction
+# Predictive Maintenance – Machine Failure Prediction
 
 **Anticipating industrial machine failures using sensor data and machine learning**
 
